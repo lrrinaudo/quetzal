@@ -7,7 +7,7 @@ script: PADRINO_ENV=travis bundle exec rake
 deploy:
   provider: heroku
   api_key: 979d3c95-7606-4caf-90e3-0a9d4d5f6076
-  app: quetzal2
+  app: resumenes
   on:
-    repo: lrrinaudo/quetzal
+    repo: lrrinaudo/resumenes
     branch: master
