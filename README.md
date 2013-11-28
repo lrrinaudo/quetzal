@@ -1,6 +1,7 @@
 Job Vacancy Application
 =======================
 
+
 Once you have clone this repository, follow these steps to start working:
 
 * Run **_bundle install --without staging production_**, to install all application dependencies
