@@ -5,7 +5,7 @@ class Resumen
   property :fecha, String
   property :num_clase, String
   property :ausentes, String
-  property :descripcion, String
+  property :descripcion, Text  
   property :prox_autor, String
   belongs_to :alumno
 
