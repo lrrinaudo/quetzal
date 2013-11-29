@@ -14,7 +14,17 @@ Resumenes::App.controllers :resumenes do
 
   get :nuevo, :map => '/crear_resumen' do
     @resumen = Resumen.new
-    @proximoAlumno = Alumno.proximo_alumno()
+    @alumnosOrdenados = Alumno.all(:order => [:cant_resumenes.asc, :apellido.asc, :nombre.asc])
+     # @alumnosOrdenados.each do | i |
+     #   puts '-------------------------'
+     #   puts 'APELLIDO:'
+     #   puts i.apellido
+     #   puts 'NOMBRE'
+     #   puts i.nombre
+     #   puts 'CANTIDAD'
+     #   puts i.cant_resumenes
+     # end
+     @proximoAlumno = @alumnosOrdenados.first
     render 'resumenes/nuevo'
   end
 
