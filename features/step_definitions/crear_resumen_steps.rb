@@ -6,13 +6,42 @@ When(/^Yo creo un resumen$/) do
   fill_in('resumen[fecha]', :with => '2013-11-11')
   fill_in('resumen[num_clase]', :with => '23')
   fill_in('resumen[ausentes]', :with => 'Fulanito')
-  @descripcion = 'En la clase se hablo de ...'
-  fill_in('resumen[descripcion]', :with => @descripcion)
+  fill_in('resumen[prox_autor]', :with => 'Lalolandia')
+  descripcion = 'En la clase se hablo de ...'
+  fill_in('resumen[descripcion]', :with => descripcion)
 end
+
+When(/^Yo creo un resumen con texto largo$/) do
+  fill_in('resumen[fecha]', :with => '2013-5-5')
+  fill_in('resumen[num_clase]', :with => '1')
+  fill_in('resumen[ausentes]', :with => 'lalo')
+  descripcionLarga = ''
+  for i in(0..60000)
+    descripcionLarga += 'p'
+  end
+  fill_in('resumen[descripcion]', :with => descripcionLarga)
+  fill_in('resumen[prox_autor]', :with => 'Lalolandia')
+end
+
 
 Then(/^confirmo el nuevo resumen con el boton crear$/) do
  click_button('Crear')
 end
+
+Then(/^deberia poder ver "(.*?)"$/) do |contenido|
+  page.should have_content(contenido)
+end
+
+
+Given(/^que estoy logeado$/) do
+  visit '/iniciar_sesion'
+  fill_in('alumno[email]', :with => 'docente@unq.com')
+  fill_in('alumno[contrasena]', :with => 'Admin0n!')
+  click_button('Iniciar')
+  page.should have_content('docente@unq.com')
+end
+
+
 
 Given(/^que estoy en la pagina de lista de resumenes$/) do
   visit "/latest"
