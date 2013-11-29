@@ -31,6 +31,7 @@ Resumenes::App.controllers :alumnos do
       params[:alumno].reject!{|k,v| k == 'confirmar_contrasena'}
       if ((params[:alumno][:contrasena] == confirmar_contrasena) && (params[:alumno][:email] == confirmar_email))
         @alumno = Alumno.new(params[:alumno])
+        @alumno.cant_resumenes = 0
         if @alumno.save
           flash[:success] = 'Alta de Alumno exitosa'
           redirect '/'

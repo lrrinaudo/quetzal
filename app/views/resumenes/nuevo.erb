@@ -6,9 +6,10 @@
  <%= f.label :ausentes %> <%= f.text_field :ausentes, :value => "Nombre/s" %> 
 <%= f.label :descripcion %> 
 <%= f.text_area :descripcion, :cols => 2000, :rows =>3, :value => "Ajustar a tamaño conveniente" %>
-<%= f.label :proximo_autor %> <%= f.text_field :prox_autor, :value => "Nombre" %> 
-
-
+<h1>Proximo Autor:
+	<b><i><u><%= @proximoAlumno.apellido %>
+	<%= @proximoAlumno.nombre %></b></i></u>
+</h1>
  <br/> 
 <%= f.submit "Crear", :class => "btn btn-primary" %> 
 

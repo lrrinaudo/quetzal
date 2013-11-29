@@ -11,7 +11,7 @@ class Resumen
 
   validates_presence_of :fecha
   validates_presence_of :num_clase
-  validates_presence_of :ausentes
+  #validates_presence_of :ausentes
   validates_presence_of :descripcion
   
   def owner

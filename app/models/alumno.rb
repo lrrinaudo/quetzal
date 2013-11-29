@@ -6,6 +6,7 @@ class Alumno
   property :apellido, String
   property :contrasena_encriptada, String
   property :email, String
+  property :cant_resumenes, Integer
   has n, :resumens
 
   validates_presence_of :nombre
