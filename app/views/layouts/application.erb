@@ -25,6 +25,7 @@
               <ul class="nav">
                 <li><%= link_to 'Inicio', url_for(:inicio, :index) %></li>
 		            <li><%= link_to 'Ver Resumenes', url_for(:resumenes, :latest) %></li>
+                <li><%= link_to 'Ver Alumnos', url_for(:alumnos, :latest) %></li>
                 
                 <% if iniciar_sesion? %>
 		            <li><%= link_to 'Crear Resumen', url_for(:resumenes, :nuevo) %></li>	

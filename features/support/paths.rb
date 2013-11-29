@@ -13,6 +13,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /Students\s?page/
+      '/alumnos/latest'
+
    
 
     # Add more mappings here.

@@ -24,6 +24,11 @@ Resumenes::App.controllers :alumnos do
     render 'alumnos/nuevo'
   end
 
+  get :latest do
+    @alumnos = Alumno.all
+    render 'alumnos/lista'
+  end
+
   post :crear do
       confirmar_email = params[:alumno][:confirmar_email]
       params[:alumno].reject!{|m,n| m == 'confirmar_email'}
