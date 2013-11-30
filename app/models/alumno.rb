@@ -37,4 +37,17 @@ class Alumno
     ::BCrypt::Password.new(contrasena_encriptada) == contrasena
   end
 
+  #proximo alumno en escribir un resumen
+  def self.proximo_alumno()
+    alumnosOrdenados = Alumno.all(:order => [:cant_resumenes.desc, :apellido.asc, :nombre.asc])
+    cant_resumenes_maximo = alumnosOrdenados.first.cant_resumenes
+
+    alumnosOrdenados.each do |alumno|
+	if alumno.cant_resumenes != cant_resumenes_maximo then
+		 return alumno
+	end
+    end
+    alumnosOrdenados.first
+  end
+
 end
