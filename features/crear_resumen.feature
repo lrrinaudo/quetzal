@@ -19,3 +19,8 @@ Feature: Resumen Texto
 
    
 
+  Scenario: Crear Resumen con texto largo
+    Given Que acceda a la pagina de Crear resumen
+    When Yo creo un resumen con texto largo
+    	And confirmo el nuevo resumen con el boton crear
+    Then deberia poder ver "Creacion de Resumen Exitoso y Mail enviado"
