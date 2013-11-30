@@ -6,7 +6,6 @@ When(/^Yo creo un resumen$/) do
   fill_in('resumen[fecha]', :with => '2013-11-11')
   fill_in('resumen[num_clase]', :with => '23')
   fill_in('resumen[ausentes]', :with => 'Fulanito')
-  fill_in('resumen[prox_autor]', :with => 'Lalolandia')
   descripcion = 'En la clase se hablo de ...'
   fill_in('resumen[descripcion]', :with => descripcion)
 end
@@ -20,7 +19,6 @@ When(/^Yo creo un resumen con texto largo$/) do
     descripcionLarga += 'p'
   end
   fill_in('resumen[descripcion]', :with => descripcionLarga)
-  fill_in('resumen[prox_autor]', :with => 'Lalolandia')
 end
 
 
