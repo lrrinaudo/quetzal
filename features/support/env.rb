@@ -25,6 +25,13 @@ alumno = Alumno.create(:email => 'docente@unq.com',
 		               :apellido => 'Paez', 
                    :contrasena => "Admin0n!")
 
+alumno = Alumno.create(
+      :email => 'alumno@gmail.com',
+      :nombre => 'Fulanito',
+      :apellido => 'Detal', 
+      :cant_resumenes => 0,
+      :contrasena => "Admin0n!")
+
 ##
 # You can handle all padrino applications using instead:
 #   Padrino.application

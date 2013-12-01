@@ -14,11 +14,4 @@ Feature: Alta Alumno
 	  And lleno Confirmar Contrasena con "Passw0rd!"
     And confirmo la nueva Alta de Alumno con el boton crear 
 
-
-  Scenario: List of students
-    When I am on Students page
-    Then I should see "Nombre"
-    And I should see "Apellido"
-    And I should see "Email"
-    And I should see "Cantidad de Resumenes"
     

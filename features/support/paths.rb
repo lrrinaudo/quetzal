@@ -16,7 +16,8 @@ module NavigationHelpers
     when /Students\s?page/
       '/alumnos/latest'
 
-   
+     when /new\s?summary\s?page/
+      '/crear_resumen'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
