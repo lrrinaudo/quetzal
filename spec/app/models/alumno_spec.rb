@@ -119,4 +119,128 @@ describe Alumno do
 
 	end
 
+	describe 'sugerencia del proximo alumno en escribir un resumen' do
+
+                before(:each) do
+                        @arevalo=Alumno.new
+			@arevalo.id=1
+                        @arevalo.nombre="Alejandro"
+                        @arevalo.apellido="Arevalo"
+                        @arevalo.contrasena="Alumno1234"
+			@arevalo.email="aarevalo@gmail.com"
+			@arevalo.cant_resumenes=0
+			@arevalo.save
+
+                        @belgrano=Alumno.new
+			@belgrano.id=2
+                        @belgrano.nombre="Beatriz"
+                        @belgrano.apellido="Belgrano"
+                        @belgrano.contrasena="Alumno1234"
+			@belgrano.email="bbelgrano@gmail.com"
+			@belgrano.cant_resumenes=0
+			@belgrano.save
+ 
+			@ciruelo=Alumno.new
+			@ciruelo.id=3
+                        @ciruelo.nombre="Carlos"
+                        @ciruelo.apellido="Ciruelo"
+                        @ciruelo.contrasena="Alumno1234"
+			@ciruelo.email="cciruelo@gmail.com"
+			@ciruelo.cant_resumenes=0
+			@ciruelo.save 
+
+			#Por ahora no se guardan,solo en algunos test lo requieren
+			@arevaloPedro=Alumno.new
+			@arevaloPedro.id=4
+		        @arevaloPedro.nombre="Pedro"
+		        @arevaloPedro.apellido="Arevalo"
+		        @arevaloPedro.contrasena="Alumno1234"
+			@arevaloPedro.email="aarevalo@gmail.com"
+			@arevaloPedro.cant_resumenes=0
+
+			@alves=Alumno.new
+			@alves.id=4
+		        @alves.nombre="Pedro"
+		        @alves.apellido="Alves"
+		        @alves.contrasena="Alumno1234"
+			@alves.email="aarevalo@gmail.com"
+			@alves.cant_resumenes=0
+			 
+                
+                  end
+
+                after(:each) do
+                            Alumno.all.destroy
+                 end
+        
+                it 'deberia retornar al alumno Arevalo cuando nadie tene resumenes creados' do
+      
+                 Alumno.proximo_alumno().should == @arevalo
+                end
+
+		it 'deberia retornar al alumno Belgrano cuando Arevalo tiene un resumen' do
+      		 @arevalo.cant_resumenes=1
+		 @arevalo.save
+                 Alumno.proximo_alumno().should == @belgrano
+                end
+
+		it 'deberia retornar al alumno Ciruelo cuando Arevalo y beatriz  tienen un resumen' do
+      		 @arevalo.cant_resumenes=1
+		 @arevalo.save
+		 @belgrano.cant_resumenes=1
+		 @belgrano.save
+                 Alumno.proximo_alumno().should == @ciruelo
+                end
+
+		it 'deberia retornar al alumno Ciruelo cuando Arevalo tiene 2 resumenes y beatriz  tienen un resumen' do
+      		 @arevalo.cant_resumenes=2
+		 @arevalo.save
+		 @belgrano.cant_resumenes=1
+		 @belgrano.save
+                 Alumno.proximo_alumno().should == @ciruelo
+                end
+
+		it 'deberia retornar nil cuando no hay alumnos registrados' do
+      		 Alumno.all.destroy
+                 Alumno.proximo_alumno().should == nil
+                end
+
+		it 'deberia retornar al alumno Arevalo cuando  todos tienen un resumen' do
+      		 @arevalo.cant_resumenes=1
+		 @arevalo.save
+		 @belgrano.cant_resumenes=1
+		 @belgrano.save
+		 @ciruelo.cant_resumenes=1
+		 @ciruelo.save
+                 Alumno.proximo_alumno().should == @arevalo
+                end
+
+		it 'deberia retornar al alumno Ciruelo cuando Arevalo y Belgrano tienen 2 resumenes cada uno' do
+      		 @arevalo.cant_resumenes=2
+		 @arevalo.save
+		 @belgrano.cant_resumenes=2
+		 @belgrano.save
+                 Alumno.proximo_alumno().should == @ciruelo
+                end
+
+		it 'deberia retornar al alumno Arevalo cuando Ciruelo tiene un resumen' do
+		 @ciruelo.cant_resumenes=1
+		 @ciruelo.save
+                 Alumno.proximo_alumno().should == @arevalo
+                end
+
+
+		it 'deberia retornar al alumno Arevalo Alejandro cuando nadie tienen resumenes y existe el alumno Alves Pedro' do
+		 #En este caso se tiene en cuanta el orden alfabetico por nombre
+		 @arevaloPedro.save
+                 Alumno.proximo_alumno().should == @arevalo
+                end
+
+		it 'deberia retornar al alumno Alves cuando nadie tienen resumenes y existe el alumno Arevalo' do
+		 @alves.save
+                 Alumno.proximo_alumno().should == @alves
+                end
+               
+        end
+
 end

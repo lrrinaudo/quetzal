@@ -38,16 +38,25 @@ class Alumno
   end
 
   #proximo alumno en escribir un resumen
+  #el primero en orden alfabetico y quien tiene menos resumenes.
   def self.proximo_alumno()
     alumnosOrdenados = Alumno.all(:order => [:cant_resumenes.desc, :apellido.asc, :nombre.asc])
-    cant_resumenes_maximo = alumnosOrdenados.first.cant_resumenes
+   
+    #Si no hay alumnos registrados retorna nil
+    if alumnosOrdenados.length == 0 then
+	return nil
+    end
+
+    cant_resumenes_maximo = alumnosOrdenados.first.cant_resumenes 
+    proximoAlumno=alumnosOrdenados.first
 
     alumnosOrdenados.each do |alumno|
 	if alumno.cant_resumenes != cant_resumenes_maximo then
-		 return alumno
+		 proximoAlumno=alumno
+		 cant_resumenes_maximo=alumno.cant_resumenes
 	end
     end
-    alumnosOrdenados.first
+    proximoAlumno
   end
 
 end

@@ -9,8 +9,12 @@
 
 
 <h1>Proximo Autor:
-	<b><i><u><%= @proximoAlumno.apellido %>
-	<%= @proximoAlumno.nombre %></b></i></u>
+	<% if @proximoAlumno != nil then %>
+		<b><i><u><%= @proximoAlumno.apellido %>
+		<%= @proximoAlumno.nombre %></b></i></u>
+	<% else %>
+		<%= 'No hay alumnos registrados' %>
+	<% end %>
 </h1>
  <br/> 
 <%= f.submit "Crear", :class => "btn btn-primary" %> 
