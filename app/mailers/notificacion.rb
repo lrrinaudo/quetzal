@@ -5,7 +5,7 @@ Resumenes::App.mailer :notificacion do
     to alumno.email
     subject 'Resumenes: Nuevo Resumen'
     locals :resumen => resumen
-    content_type :plain
+    content_type :html
     render 'notificacion/info_email'
   end
 
