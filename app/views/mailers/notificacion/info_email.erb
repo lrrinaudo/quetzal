@@ -9,5 +9,5 @@ Tu tienes un nuevo resumen:
 * Ausentes: <%= resumen.ausentes %>
 * Descripcion: <%= resumen.descripcion.html_safe  %>
 
-* El proximo autor es: <%= resumen.prox_autor %>
+* El proximo autor es: <%= Alumno.proximo_alumno().nombre + ' ' + Alumno.proximo_alumno().apellido  %>
 Saludos!
