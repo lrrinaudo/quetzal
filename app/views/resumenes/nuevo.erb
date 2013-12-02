@@ -1,3 +1,20 @@
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<%= javascript_include_tag '/assets/jquery-te-1.4.0.min' %>
+<%= stylesheet_link_tag '/assets/jquery-te-1.4.0.css' %>
+
+
+
+<script type="text/javascript">
+
+$(function() {
+        $( "#resumen_descripcion" ).jqte();
+
+});
+
+</script>
+
 <h1>Crear Resumen</h1>
 
  <% form_for(@resumen, '/resumenes/crear') do |f| %> 
