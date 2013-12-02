@@ -18,8 +18,8 @@ Resumenes::App.controllers :resumenes do
     render 'resumenes/nuevo'
   end
 
- get :ver do
-    @resumen = Resumen.all
+ get :ver, :with => :resumen_id  do
+    @resumen = Resumen.get(params[:resumen_id])
     render 'resumenes/ver'
   end
 
