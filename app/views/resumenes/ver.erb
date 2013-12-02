@@ -1,2 +1,11 @@
-<h1> VER REsumen</h1>
+<h2>Resumen de la clase <%= @resumen.num_clase %>  </h2>
+
+<h4>Autor: <%= @resumen.alumno.nombre %> 
+<%= @resumen.alumno.apellido %> </h4>
+<h4>Fecha: <%= @resumen.fecha %></h4>
+<br/>
+<br/>
 <%= @resumen.descripcion.html_safe %> 
+<br/><br/>
+<h4>Ausentes:</h4> <%= @resumen.ausentes %>
+<br/>
