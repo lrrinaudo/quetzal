@@ -478,6 +478,7 @@ if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
 	border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px;
 	overflow:hidden;
 	transition:border 0.4s; -webkit-transition:border 0.4s; -moz-transition:border 0.4s; -o-transition:border 0.4s;
+	height: 500px
 }
 .jqte_green * {
 	color:#333;
